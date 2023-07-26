@@ -1,0 +1,1 @@
+For ubuntu image, I follow the naming of official docker image on [dockerhub](https://hub.docker.com/_/ubuntu). For example, an image built on 2022-11-01 from `ubuntu:jammy` would have a tag like `ubuntu-base:jammy-20221101`.

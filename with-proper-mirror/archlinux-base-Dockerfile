@@ -1,0 +1,10 @@
+FROM archlinux:base-devel AS arch-base
+
+# set mirror
+RUN echo $'\n\
+Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch\n\
+Server = https://mirrors.hit.edu.cn/archlinux/$repo/os/$arch\n\
+' > /etc/pacman.d/mirrorlist
+
+# normal user
+RUN useradd --create-home --shell /bin/bash writer

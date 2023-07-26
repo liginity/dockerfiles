@@ -1,0 +1,9 @@
+FROM ubuntu:jammy AS ubuntu-base
+
+RUN sed -i -E 's|(archive\|security).ubuntu.com|mirrors.ustc.edu.cn|g' /etc/apt/sources.list \
+    && apt-get update \
+    && apt-get install -y ca-certificates \
+    && sed -i 's|http|https|g' /etc/apt/sources.list
+
+# normal user
+RUN useradd --create-home --shell /bin/bash writer
