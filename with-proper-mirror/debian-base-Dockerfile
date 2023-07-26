@@ -1,10 +1,10 @@
-FROM debian:stable AS debian-base
+FROM debian:bookworm AS debian-base
 
 # use ustc mirror
-RUN sed -i -E 's|(deb\|security).debian.org|mirrors.ustc.edu.cn|g' /etc/apt/sources.list \
+RUN sed -i -E 's|deb.debian.org|mirrors.ustc.edu.cn|g' /etc/apt/sources.list.d/debian.sources \
     && apt-get update \
     && apt-get install -y ca-certificates \
-    && sed -i 's|http|https|g' /etc/apt/sources.list
+    && sed -i 's|http|https|g' /etc/apt/sources.list.d/debian.sources
 
 # normal user
 RUN useradd --create-home --shell /bin/bash writer
