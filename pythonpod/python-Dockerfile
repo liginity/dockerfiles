@@ -1,0 +1,33 @@
+# customize official python image
+# I intend to add a -root suffix for image where the default user is root.
+FROM python:3.9-bullseye AS pythonpod-root
+# debian bullseye, 11
+
+ARG USERNAME=writer
+
+RUN sed -i -E 's|http[s]?://(deb\|security).debian.org|https://mirrors.ustc.edu.cn|g' /etc/apt/sources.list
+
+# set pypi mirror in the global configuration file: /etc/pip.conf
+RUN pip config --global set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+
+# add normal user
+RUN useradd --create-home --shell /bin/bash $USERNAME
+
+# USER writer
+# RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+# NOTE I am not sure how to deal with this.
+# I need to create a normal user, and it is also required to work as root
+# when running consequent building steps.
+# I just switch to root now.
+# USER root
+
+
+FROM pythonpod-root AS pythonpod
+
+# need to specify ARG again.
+ARG USERNAME=writer
+# just uses a normal user
+USER $USERNAME
+WORKDIR /home/$USERNAME
+# RUN printf "PATH=$HOME/.local/bin:$PATH\n" >> ~/.bashrc
+ENV PATH "/home/${USERNAME}/.local/bin:$PATH"
