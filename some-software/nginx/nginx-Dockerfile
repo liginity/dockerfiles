@@ -1,0 +1,6 @@
+FROM debian-base AS nginxpod
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends nginx
+
+CMD ["nginx", "-g", "daemon off;"]
