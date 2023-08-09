@@ -1,11 +1,11 @@
 # customize official python image
 # I intend to add a -root suffix for image where the default user is root.
-FROM python:3.9-bullseye AS pythonpod-root
-# debian bullseye, 11
+FROM python:3.11-bookworm AS pythonpod-root
+# debian bookworm, 12
 
 ARG USERNAME=writer
 
-RUN sed -i -E 's|http[s]?://(deb\|security).debian.org|https://mirrors.ustc.edu.cn|g' /etc/apt/sources.list
+RUN sed -i -E 's|http[s]?://(deb\|security).debian.org|https://mirrors.ustc.edu.cn|g' /etc/apt/sources.list.d/debian.sources
 
 # set pypi mirror in the global configuration file: /etc/pip.conf
 RUN pip config --global set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
