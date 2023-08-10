@@ -1,0 +1,4 @@
+FROM stem-ipython-pod AS pytorchpod
+
+RUN pip install torch==2.0.1 torchvision==0.15.2 torchtext==0.15.0 --index-url https://download.pytorch.org/whl/cpu
+# ignore torchaudio

@@ -1,0 +1,4 @@
+FROM ipythonpod AS stem-ipython-pod
+
+# don't know what to install now.
+RUN pip install numpy scipy pandas jupyterlab sympy
