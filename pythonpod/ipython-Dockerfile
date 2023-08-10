@@ -3,6 +3,6 @@
 # maybe it is OK to substitute the first FROM on the commandline.
 FROM pythonpod AS ipythonpod
 
-RUN pip install ipython
+RUN pip install ipython==8.14.0
 
 CMD ["ipython3"]
