@@ -1,4 +1,5 @@
 #!/bin/bash
+# NOTE plan to use this as a library.
 
 set -euo pipefail
 
@@ -7,6 +8,9 @@ function _build-image-usage () {
 }
 
 function build-image () {
+    # $1: docker file name
+    # $2: image name
+
     if [ $# -lt 1 ]; then
         printf "missing argument\n" >&2
         _build-image-usage
@@ -23,5 +27,3 @@ function build-image () {
 
     docker build -f "${dockerfile_name}" -t "${image_name}" -t "${image_name}:${tag_name}" .
 }
-
-build-image "$@"
