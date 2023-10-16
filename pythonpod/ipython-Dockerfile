@@ -1,7 +1,8 @@
 # ipython
 # Question how to deal with python version, when starting from an image?
 # maybe it is OK to substitute the first FROM on the commandline.
-FROM pythonpod AS ipythonpod
+ARG IMAGE_NAME=pythonpod
+FROM ${IMAGE_NAME} AS ipythonpod
 
 RUN pip install ipython==8.14.0
 

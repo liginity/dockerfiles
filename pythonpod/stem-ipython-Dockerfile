@@ -1,4 +1,5 @@
-FROM ipythonpod AS stem-ipython-pod
+ARG IMAGE_NAME=ipythonpod
+FROM ${IMAGE_NAME} AS stem-ipython-pod
 
 # don't know what to install now.
 RUN pip install numpy==1.24.2 scipy==1.10.1 pandas==1.5.3 jupyterlab==4.0.4 sympy==1.11.1 matplotlib==3.6.3

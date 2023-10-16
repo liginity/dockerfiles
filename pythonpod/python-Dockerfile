@@ -1,7 +1,9 @@
+ARG IMAGE_NAME=python:3.11-bookworm
+# debian bookworm, 12
+
 # customize official python image
 # I intend to add a -root suffix for image where the default user is root.
-FROM python:3.11-bookworm AS pythonpod-root
-# debian bookworm, 12
+FROM ${IMAGE_NAME} AS pythonpod-root
 
 ARG USERNAME=writer
 
