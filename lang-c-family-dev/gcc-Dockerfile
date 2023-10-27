@@ -1,0 +1,10 @@
+FROM debian-base as gccpod
+
+RUN apt-get update && \
+    apt-get install -y build-essential
+
+
+FROM gccpod as lang-c-dev-pod
+
+RUN apt-get update && \
+    apt-get install -y gdb
