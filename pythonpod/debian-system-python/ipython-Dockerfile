@@ -1,6 +1,6 @@
 ARG IMAGE_NAME=sys-python-pod
 FROM ${IMAGE_NAME} AS sys-ipython-pod
 
-RUN apt-get install --no-install-recommends -y python3-ipython
+RUN apt-get install --no-install-recommends -y ipython3
 
 CMD ["ipython3"]

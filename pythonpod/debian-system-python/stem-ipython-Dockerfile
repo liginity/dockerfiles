@@ -2,4 +2,4 @@ ARG IMAGE_NAME=sys-ipython-pod
 FROM ${IMAGE_NAME} AS sys-stem-ipython-pod
 
 # NOTE there seem to be no jupyterlab package in debian 12 bookworm.
-RUN apt-get install --no-install-recommends -y python3-numpy python3-scipy python3-pandas python3-notebook python3-sympy python3-matplotlib
+RUN apt-get install --no-install-recommends -y python3-numpy python3-scipy python3-pandas python3-sympy python3-matplotlib jupyter jupyter-notebook jupyter-nbconvert
