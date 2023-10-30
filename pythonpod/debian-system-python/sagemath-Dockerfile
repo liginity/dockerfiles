@@ -1,0 +1,4 @@
+ARG IMAGE_NAME=sys-stem-ipython-pod
+FROM ${IMAGE_NAME} AS sys-sagemath
+
+RUN apt-get install --no-install-recommends -y sagemath

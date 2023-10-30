@@ -1,0 +1,24 @@
+ARG IMAGE_NAME=debian-base
+
+FROM ${IMAGE_NAME} AS sys-python-pod-root
+
+ARG USERNAME=writer
+
+# set pypi mirror in the global configuration file: /etc/pip.conf
+RUN apt-get install --no-install-recommends -y python3-pip python3-venv
+
+RUN pip config --global set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+
+# add normal user
+RUN useradd --create-home --shell /bin/bash $USERNAME
+
+
+FROM sys-python-pod-root AS sys-python-pod
+
+# need to specify ARG again.
+ARG USERNAME=writer
+# just uses a normal user
+USER $USERNAME
+WORKDIR /home/$USERNAME
+# RUN printf "PATH=$HOME/.local/bin:$PATH\n" >> ~/.bashrc
+ENV PATH "/home/${USERNAME}/.local/bin:$PATH"
