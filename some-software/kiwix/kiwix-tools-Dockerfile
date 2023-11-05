@@ -1,0 +1,6 @@
+FROM debian-base AS kiwix-tools-pod
+
+RUN apt-get install -y kiwix-tools
+
+# SIGTERM wouldn't stop kiwix-serve quickly.
+STOPSIGNAL SIGKILL
