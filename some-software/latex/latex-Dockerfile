@@ -1,0 +1,6 @@
+FROM ubuntu-base AS latexpod
+
+RUN apt-get install -y --no-install-recommends \
+    texlive-lang-chinese texlive-lang-english texlive-science texlive-latex-base \
+    texlive-latex-recommended texlive-latex-extra latexmk texlive-xetex texlive-plain-generic
+
