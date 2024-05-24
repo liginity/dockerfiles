@@ -7,7 +7,10 @@ FROM ${IMAGE_NAME} AS pythonpod-root
 
 ARG USERNAME=writer
 
-RUN sed -i -E 's|http[s]?://(deb\|security).debian.org|https://mirrors.ustc.edu.cn|g' /etc/apt/sources.list.d/debian.sources
+# RUN sed -i -E 's|http[s]?://(deb\|security).debian.org|https://mirrors.ustc.edu.cn|g' /etc/apt/sources.list.d/debian.sources
+RUN sed -i -E 's|http[s]?://(archive\|security).ubuntu.com|https://mirrors.ustc.edu.cn|g' /etc/apt/sources.list
+
+RUN apt-get update && apt-get install -y --no-install-recommends python3-pip
 
 # set pypi mirror in the global configuration file: /etc/pip.conf
 RUN pip config --global set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
