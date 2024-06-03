@@ -1,13 +1,14 @@
-FROM ubuntu-base AS pandocpod
+FROM debian-base AS pandocpod
 
-ARG VERSION=2.19.2
+# ARG VERSION=2.19.2
 
-# RUN apt-get update && apt-get install -y pandoc
-COPY ./pandoc-${VERSION}-linux-amd64.tar.gz /
+RUN apt-get update && apt-get install -y pandoc
 
-RUN tar -xzf /pandoc-${VERSION}-linux-amd64.tar.gz && \
-    mv /pandoc-${VERSION}/bin/* /bin/ && \
-    rm -rf /pandoc-${VERSION}/
+# COPY ./pandoc-${VERSION}-linux-amd64.tar.gz /
+
+# RUN tar -xzf /pandoc-${VERSION}-linux-amd64.tar.gz && \
+#     mv /pandoc-${VERSION}/bin/* /bin/ && \
+#     rm -rf /pandoc-${VERSION}/
 
 # NOTE it seems using root user is more convenient.
 # USER writer
