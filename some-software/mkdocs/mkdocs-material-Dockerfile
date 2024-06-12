@@ -1,0 +1,3 @@
+FROM mkdocspod AS mkdocs-material-pod
+
+RUN pip install mkdocs-material==9.5.26
