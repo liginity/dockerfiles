@@ -4,7 +4,8 @@ FROM debian:bookworm AS debian-base
 RUN sed -i -E 's|deb.debian.org|mirrors.ustc.edu.cn|g' /etc/apt/sources.list.d/debian.sources \
     && apt-get update \
     && apt-get install -y ca-certificates \
-    && sed -i 's|http|https|g' /etc/apt/sources.list.d/debian.sources
+    && sed -i 's|http|https|g' /etc/apt/sources.list.d/debian.sources \
+    && apt-get upgrade -y
 
 # normal user
 RUN useradd --create-home --shell /bin/bash writer
