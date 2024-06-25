@@ -3,7 +3,7 @@
 set -euo pipefail
 
 port=8080
-socket_path=/home/writer/.config/code_server_socket
+socket_path=/home/writer/.config/code_server.sock
 
 # run code server
 # code-server --disable-telemetry --disable-update-check --bind-addr 0.0.0.0:${port}
