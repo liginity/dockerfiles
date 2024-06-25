@@ -1,0 +1,12 @@
+ARG IMAGE_NAME=debian-base
+
+FROM ${IMAGE_NAME} AS clangpod
+
+RUN apt-get update && \
+    apt-get install -y clang-14 clang-format-14
+
+
+FROM clangpod as clang-full-pod
+
+RUN apt-get update && \
+    apt-get install -y lldb-14 clangd-14
