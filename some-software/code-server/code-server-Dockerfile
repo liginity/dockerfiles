@@ -10,6 +10,9 @@ ARG VERSION=4.90.3
 
 # use local code-server deb file.
 COPY ./code-server_${VERSION}_amd64.deb /
+COPY ./wrapper_script.sh /
 RUN if [ "$VERSION" = "4.90.3" ]; then echo "6c736e6ca01cedf1b78fb2288529e0da8cacce5ceae8dc5b7eb7423e83658639 code-server_${VERSION}_amd64.deb" | sha256sum --check --status; else :; fi
 
 RUN dpkg -i /code-server_${VERSION}_amd64.deb
+
+CMD /wrapper_script.sh
